@@ -84,16 +84,19 @@ router.get('/publisher', (req,res)=>{
       res.send(counter)
 });
 
-router.delete('/books/:id', 
-    function(req, res) {
-        req.isbn = isbn;
-        req.isbn.remove(function(err){
-            if (err)
-                res.status(500).send(err);
-            else
-                res.redirect('/')
-        });
-});
+router.get("/deletebook/:isbn" ,(req , res)=>{
+  isbn_s = req.params.isbn;
+  let updated_books= books.filter(user => user.isbn !== isbn_s)
+  for (let [i, user] of books.entries()){
+      if(user.isbn === isbn_s){
+          books.splice(i , 1)
+      }
+  }
+
+  let data = {"books": isbn}
+  fs.writeFileSync(path.join(__dirname , "../updated_book.json"),JSON.stringify(data))
+  res.send("Book Deleted")
+})
 
 
 
