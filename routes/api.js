@@ -84,6 +84,16 @@ router.get('/publisher', (req,res)=>{
       res.send(counter)
 });
 
+router.delete('/books/:id', 
+    function(req, res) {
+        req.isbn = isbn;
+        req.isbn.remove(function(err){
+            if (err)
+                res.status(500).send(err);
+            else
+                res.redirect('/')
+        });
+});
 
 
 

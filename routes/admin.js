@@ -11,6 +11,15 @@ app.get('/books', (req, res) => {
     res.render('books', {books})
 })
 
+app.delete('/books', function(req, res) {
+   res.render('books', )
+});
+
+
+app.delete('/booksMedia', function(req, res) {
+    res.render('booksAllMedia',{books}.title, )
+ });
+
 app.get('/', (req, res) => {
     res.render('index')
 })

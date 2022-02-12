@@ -8,8 +8,14 @@
     <title>All books</title>
 </head>
 <body>
+   <div class="container">
+    <% books.map((i)=>{%>
+            <h2 class="card-title"><%=i.title%></h2>
+            <h5 class="card-text"><%=i.subtitle%></h5>
+            <p><%=i.description%></p>
+        <%})%>
+   </div>
     
-
 
 
 
